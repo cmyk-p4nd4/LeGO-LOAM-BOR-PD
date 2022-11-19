@@ -11,9 +11,9 @@ lego_loam:
         scan_period: 0.1                    # seconds
 
     imageProjection:
-        segment_valid_point_num: 5
+        segment_valid_point_num: 10
         segment_valid_line_num: 3
-        segment_theta: 60.0                      # decrese this value may improve accuracy
+        segment_theta: 45.0                      # decrese this value may improve accuracy
 
     featureAssociation:
         edge_threshold: 0.1
@@ -21,7 +21,7 @@ lego_loam:
         nearest_feature_search_distance: 5
 
     mapping:
-        enable_loop_closure: false
+        enable_loop_closure: true
         mapping_frequency_divider: 5
 
         surrounding_keyframe_search_radius: 50.0   # key frame that is within n meters from current pose will be

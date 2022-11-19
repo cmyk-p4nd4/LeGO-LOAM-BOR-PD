@@ -16,8 +16,9 @@ class ImageProjection {
   void cloudHandler(const sensor_msgs::PointCloud2ConstPtr &laserCloudMsg);
 
  private:
-  void findStartEndAngle();
   void resetParameters();
+  void removeInvalidCloud();
+  void findStartEndAngle();
   void projectPointCloud();
   void groundRemoval();
   void cloudSegmentation();

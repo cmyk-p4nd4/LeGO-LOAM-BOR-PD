@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(lego_loam_bor)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3 -g ")
+set(CMAKE_BUILD_TYPE "Release")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g -std=c++14 -ffast-math -DGTSAM_USE_SYSTEM_EIGEN=ON")
+
 
 #
 
@@ -24,6 +26,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(GTSAM REQUIRED QUIET)
 find_package(PCL REQUIRED QUIET)
+find_package(Boost REQUIRED QUIET COMPONENTS serialization thread timer chrono)
 
 catkin_package(
   INCLUDE_DIRS include
@@ -51,6 +54,6 @@ add_executable(lego_loam_bor
     src/transformFusion.cpp
     src/main.cpp)
 
-add_dependencies(lego_loam_bor ${catkin_EXPORTED_TARGETS} cloud_msgs_gencpp)
+add_dependencies(lego_loam_bor ${catkin_EXPORTED_TARGETS} cloud_msgs_generate_messages_cpp)
 target_link_libraries(lego_loam_bor ${catkin_LIBRARIES} ${PCL_LIBRARIES} gtsam)
 

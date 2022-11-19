@@ -16,9 +16,9 @@ int main(int argc, char** argv) {
   std::string imu_topic;
   std::string lidar_topic;
 
-  nh.getParam("rosbag", rosbag);
-  nh.getParam("imu_topic", imu_topic);
-  nh.getParam("lidar_topic", lidar_topic);
+  nh.param("rosbag", rosbag, std::string());
+  nh.param("imu_topic", imu_topic, std::string());
+  nh.param("lidar_topic", lidar_topic, std::string());
 
   bool use_rosbag = false;
 
